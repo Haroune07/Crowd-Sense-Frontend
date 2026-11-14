@@ -58,7 +58,7 @@ export default function NewAnnouncement() {
               <span style={{ width: 24, height: 24, borderRadius: '50%', background: '#fff', boxShadow: '0 1px 3px rgba(15,23,42,.35)' }} />
             </span>
           </button>
-          {pinned && <div className="fade"><PickMap value={point} onPick={setPoint} height={120} /></div>}
+          {pinned && <div className="fade"><PickMap value={point} onPick={setPoint} height={240} /></div>}
         </div>
         {error && <p className="error">{error}</p>}
       </div>
