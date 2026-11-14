@@ -39,13 +39,8 @@ export default function Login() {
   return (
     <>
       <div className="mesh in" style={{ margin: 8, height: 380, borderRadius: 28, position: 'relative', overflow: 'hidden' }}>
-        <div className="glass" style={{ position: 'absolute', left: 18, top: 44, height: 44, borderRadius: 22, padding: '0 14px 0 8px', display: 'flex', alignItems: 'center', gap: 10 }}>
-          <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
-            <circle cx="14" cy="14" r="12" fill="#3FB68B" opacity=".35" />
-            <circle cx="14" cy="14" r="8" fill="#F2884B" opacity=".55" />
-            <circle cx="14" cy="14" r="4" fill="#E5484D" />
-          </svg>
-          <span style={{ fontSize: 16, fontWeight: 600, color: 'var(--ink)' }}>Crowd-Sense</span>
+        <div className="glass" style={{ position: 'absolute', left: 18, top: 40, borderRadius: 20, padding: '10px 16px', display: 'flex', alignItems: 'center' }}>
+          <img src="/logo.png" alt="Crowd-Sense" style={{ height: 40, display: 'block' }} />
         </div>
         <div style={{ position: 'absolute', left: 22, right: 22, bottom: 30, display: 'flex', flexDirection: 'column', gap: 12 }}>
           <h1 className="disp">Protest safe.<span>Together.</span></h1>
