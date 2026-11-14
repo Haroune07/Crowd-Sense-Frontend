@@ -22,7 +22,13 @@ export default function Login() {
       saveSession({ token: accessToken });
       const user = await api.me();
       saveSession({ user });
-      navigate('/start');
+      // Already in a protest? Go straight to the map.
+      if (user.manifestationId) {
+        saveSession({ manif: await api.currentManif() });
+        navigate('/map');
+      } else {
+        navigate('/start');
+      }
     } catch (err) {
       setError(err.message);
     } finally {

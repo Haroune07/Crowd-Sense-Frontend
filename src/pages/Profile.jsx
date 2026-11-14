@@ -13,7 +13,9 @@ export default function Profile() {
   const when = new Date(manif.startsAt);
 
   async function leave() {
-    await api.leaveManif().catch(() => {});
+    const result = await api.leaveManif().catch(() => null);
+    // The backend gives a new token after leaving (the role changed back to protester).
+    if (result?.accessToken) saveSession({ token: result.accessToken });
     saveSession({ manif: null, user: { ...user, role: 'protester' } });
     navigate('/start');
   }

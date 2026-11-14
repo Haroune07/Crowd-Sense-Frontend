@@ -31,6 +31,9 @@ function photoLink(url) {
   return url.startsWith('http') ? url : API_URL + (url.startsWith('/') ? url : '/uploads/' + url);
 }
 
+// The backend accepts danger levels 1 to 5; the app shows 4 levels, so 5 counts as Danger (4).
+const toLevel = (n) => Math.min(Math.max(Number(n) || 1, 1), 4);
+
 const real = {
   // ── account ──
   login: (email, password) => request('/auth/login', { method: 'POST', body: { email, password } }),
@@ -47,7 +50,7 @@ const real = {
   // ── reports and map ──
   heatmap: async () => {
     const points = await request('/reports/heatmap');
-    return points.map((p) => ({ lat: p.lat, lng: p.lng, level: p.dangerLevel }));
+    return points.map((p) => ({ lat: p.lat, lng: p.lng, level: toLevel(p.dangerLevel) }));
   },
   sendReport: ({ lat, lng, level, note, photo }) => {
     const form = new FormData();
@@ -62,7 +65,8 @@ const real = {
     const zones = await request('/reports/pending');
     return zones.map((z) => ({
       ...z,
-      reports: z.reports.map((r) => ({ ...r, photoUrl: photoLink(r.photoUrl) })),
+      maxDanger: toLevel(z.maxDanger),
+      reports: z.reports.map((r) => ({ ...r, dangerLevel: toLevel(r.dangerLevel), photoUrl: photoLink(r.photoUrl) })),
     }));
   },
   decideZone: (ids, status) => request('/reports/verify-many', { method: 'PATCH', body: { ids, status } }),
