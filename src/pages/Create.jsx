@@ -48,9 +48,7 @@ export default function Create() {
         <div>
           <span className="lab">Meeting point</span>
           <div className="card" style={{ padding: 6, display: 'flex', flexDirection: 'column', gap: 6 }}>
-            <PickMap value={point} onPick={setPoint} height={130} />
-            <input className="inp" value={form.place} onChange={set('place')} placeholder="Place name, e.g. Parc Émilie-Gamelin" aria-label="Meeting place name"
-              style={{ borderColor: 'transparent', background: '#F1F5F9', height: 46 }} />
+            <PickMap value={point} onPick={setPoint} place={form.place} onPlace={(place) => setForm((f) => ({ ...f, place }))} height={150} />
           </div>
         </div>
         <div><label className="lab" htmlFor="desc">Description</label><textarea className="inp" id="desc" rows={3} value={form.description} onChange={set('description')} /></div>
