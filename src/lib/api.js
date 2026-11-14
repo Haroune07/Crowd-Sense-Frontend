@@ -3,8 +3,10 @@
 import { getSession } from './session.js';
 import * as mock from './mock.js';
 
-const API_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
-export const DEMO = !API_URL;
+// VITE_API_URL=https://backend-link -> that backend. VITE_API_URL=/ -> same address (dev proxy).
+const RAW_URL = import.meta.env.VITE_API_URL || '';
+const API_URL = RAW_URL.replace(/\/$/, '');
+export const DEMO = !RAW_URL;
 
 async function request(path, { method = 'GET', body, form } = {}) {
   const headers = {};
