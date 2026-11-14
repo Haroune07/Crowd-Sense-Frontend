@@ -40,7 +40,7 @@ export default function Login() {
     <>
       <div className="mesh in" style={{ margin: 8, height: 380, borderRadius: 28, position: 'relative', overflow: 'hidden' }}>
         <div className="glass" style={{ position: 'absolute', left: 18, top: 40, borderRadius: 20, padding: '10px 16px', display: 'flex', alignItems: 'center' }}>
-          <img src="/logo.png" alt="Crowd-Sense" style={{ height: 40, display: 'block' }} />
+          <img src="/logo.png" alt="Crowd-Sense" style={{ height: 56, display: 'block' }} />
         </div>
         <div style={{ position: 'absolute', left: 22, right: 22, bottom: 30, display: 'flex', flexDirection: 'column', gap: 12 }}>
           <h1 className="disp">Protest safe.<span>Together.</span></h1>
